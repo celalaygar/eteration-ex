@@ -50,7 +50,7 @@ public class AccountService {
         if(!account.isPresent())
             return false;
         Account acc= account.get();
-        if(!(acc.getBalance()>0) && !(acc.getBalance() >trns.getAmount()) )
+        if(  acc.getBalance() <= 0 || acc.getBalance() <trns.getAmount() )
             return false;
         Transaction transaction = new PhoneBillPaymentTransaction(trns.getPhoneType(), trns.getPhoneNumber(), trns.getAmount());
         acc.post(transaction);
@@ -62,7 +62,7 @@ public class AccountService {
         if(!account.isPresent())
             return false;
         Account acc= account.get();
-        if(!(acc.getBalance()>0) && !(acc.getBalance() >dto.getAmount()) )
+        if(  acc.getBalance() <= 0.0 || acc.getBalance() <dto.getAmount() )
             return false;
         Transaction transaction = new WithdrawalTransaction(dto.getAmount());
         acc.post(transaction);
