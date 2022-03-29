@@ -2,22 +2,31 @@ package com.eteration.simplebanking.dto;
 
 public class RawDto {
 
-    private Long accountId;
     private Double amount;
+    private String phoneType;
+    private String phoneNumber;
+
+    public Double getAmount() {
+        return amount;
+    }
 
     public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public String getPhoneType() {
+        return phoneType;
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
     }
 
-    public Double getAmount() {
-        return amount;
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

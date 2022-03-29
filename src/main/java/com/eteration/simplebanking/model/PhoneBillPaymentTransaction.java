@@ -15,6 +15,10 @@ public class PhoneBillPaymentTransaction extends  Transaction {
     private String type;
     private String phoneNumber;
 
+    public PhoneBillPaymentTransaction(Double amount) {
+        type = "phoneBillPaymentTransaction";
+    }
+
     public PhoneBillPaymentTransaction() {
     }
 

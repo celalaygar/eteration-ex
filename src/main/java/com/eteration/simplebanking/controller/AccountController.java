@@ -61,8 +61,8 @@ public class AccountController {
         return ResponseEntity.ok(accountService.debit(number, transaction));
     }
     @RequestMapping(path = "/debit-with-phone/{number}", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> debitWithPhone(@PathVariable String number, @RequestBody Transaction transaction) {
-        return ResponseEntity.ok(accountService.debitWithPhone(number, transaction));
+    public ResponseEntity<Boolean> debitWithPhone(@PathVariable String number, @RequestBody PhoneBillPaymentTransaction trns) {
+        return ResponseEntity.ok(accountService.debitWithPhone(number, trns));
     }
 
 }

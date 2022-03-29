@@ -45,12 +45,12 @@ public class AccountService {
         return true;
     }
 
-    public boolean debitWithPhone(String number, Transaction dto) {
+    public boolean debitWithPhone(String number, PhoneBillPaymentTransaction trns) {
         Optional<Account> account = accountRepo.findByNumber(number);
         if(account.isPresent())
             return false;
         Account acc= account.get();
-        Transaction transaction = new PhoneBillPaymentTransaction(dto.getAmount());
+        Transaction transaction = new PhoneBillPaymentTransaction(trns.getPhoneType(), trns.getPhoneNumber(), trns.getAmount());
         acc.post(transaction);
         transactionRepo.save(transaction);
         return true;
