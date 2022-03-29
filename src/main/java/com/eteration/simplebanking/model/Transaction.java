@@ -22,7 +22,10 @@ public abstract class Transaction {
 
     public Transaction() {
     }
-
+    public Transaction(Double amount) {
+        this.amount = amount;
+        this.date = new Date();
+    }
     public Transaction(Date date, Double amount, Account account) {
         this.date = date;
         this.amount = amount;

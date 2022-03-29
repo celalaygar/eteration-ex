@@ -51,13 +51,13 @@ public class AccountController {
     }
 
     @RequestMapping(path = "/credit/{number}", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> credit(@PathVariable String number, @RequestBody Transaction transaction) {
+    public ResponseEntity<Boolean> credit(@PathVariable String number, @RequestBody DepositTransaction transaction) {
 
         return ResponseEntity.ok(accountService.credit(number, transaction));
     }
 
     @RequestMapping(path = "/debit/{number}", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> debit(@PathVariable String number, @RequestBody Transaction transaction) {
+    public ResponseEntity<Boolean> debit(@PathVariable String number, @RequestBody WithdrawalTransaction transaction) {
         return ResponseEntity.ok(accountService.debit(number, transaction));
     }
     @RequestMapping(path = "/debit-with-phone/{number}", method = RequestMethod.POST)

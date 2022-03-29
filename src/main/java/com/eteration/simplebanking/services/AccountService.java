@@ -47,7 +47,7 @@ public class AccountService {
 
     public boolean debitWithPhone(String number, PhoneBillPaymentTransaction trns) {
         Optional<Account> account = accountRepo.findByNumber(number);
-        if(account.isPresent())
+        if(!account.isPresent())
             return false;
         Account acc= account.get();
         Transaction transaction = new PhoneBillPaymentTransaction(trns.getPhoneType(), trns.getPhoneNumber(), trns.getAmount());
@@ -57,7 +57,7 @@ public class AccountService {
     }
     public boolean debit(String number, Transaction dto) {
         Optional<Account> account = accountRepo.findByNumber(number);
-        if(account.isPresent())
+        if(!account.isPresent())
             return false;
         Account acc= account.get();
         Transaction transaction = new WithdrawalTransaction(dto.getAmount());
@@ -68,7 +68,7 @@ public class AccountService {
     public boolean credit(String number, Transaction dto) {
 
         Optional<Account> account = accountRepo.findByNumber(number);
-        if(account.isPresent())
+        if(!account.isPresent())
             return false;
         Account acc= account.get();
         Transaction transaction = new DepositTransaction(dto.getAmount());
