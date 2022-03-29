@@ -50,6 +50,8 @@ public class AccountService {
         if(!account.isPresent())
             return false;
         Account acc= account.get();
+        if(!(acc.getBalance()>0))
+            return false;
         Transaction transaction = new PhoneBillPaymentTransaction(trns.getPhoneType(), trns.getPhoneNumber(), trns.getAmount());
         acc.post(transaction);
         transactionRepo.save(transaction);
@@ -60,6 +62,8 @@ public class AccountService {
         if(!account.isPresent())
             return false;
         Account acc= account.get();
+        if(!(acc.getBalance()>0))
+            return false;
         Transaction transaction = new WithdrawalTransaction(dto.getAmount());
         acc.post(transaction);
         transactionRepo.save(transaction);
@@ -71,6 +75,8 @@ public class AccountService {
         if(!account.isPresent())
             return false;
         Account acc= account.get();
+        if(!(acc.getBalance()>0))
+            return false;
         Transaction transaction = new DepositTransaction(dto.getAmount());
         acc.post(transaction);
         transactionRepo.save(transaction);
@@ -90,5 +96,4 @@ public class AccountService {
             return null;
         return account.get();
     }
-
 }
